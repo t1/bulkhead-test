@@ -6,7 +6,7 @@ import java.util.concurrent.*;
 import static java.util.concurrent.TimeUnit.*;
 
 public class Runner {
-    private static final ExecutorService EXECUTORS = Executors.newFixedThreadPool(20);
+    private static final ExecutorService EXECUTORS = Executors.newCachedThreadPool();
 
     public static void main(String[] args) throws Exception {
         long t = System.currentTimeMillis();
@@ -15,7 +15,7 @@ public class Runner {
             EXECUTORS.submit(() -> pingPong(finalI));
         }
         EXECUTORS.shutdown();
-        EXECUTORS.awaitTermination(10, SECONDS);
+        EXECUTORS.awaitTermination(1, MINUTES);
         System.out.println("total time: " + (System.currentTimeMillis() - t));
     }
 
