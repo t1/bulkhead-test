@@ -5,7 +5,7 @@ import org.slf4j.*;
 import javax.ejb.Stateless;
 import javax.ws.rs.*;
 
-@Path("/")
+@Path("/ping")
 @Stateless
 public class Boundary {
     private static final Logger log = LoggerFactory.getLogger(Boundary.class);
